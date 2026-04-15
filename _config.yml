@@ -1,0 +1,12 @@
+plugins:
+  - jekyll-sitemap
+  - jekyll-github-metadata
+
+title: ClassZ Agile
+description: Enterprise Agile Coaching by Wayne Hetherington
+
+# Build settings
+github: [metadata]
+
+# Jekyll configuration
+future: true
