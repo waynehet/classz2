@@ -1,15 +1,17 @@
 ---
+const base = '/classz2';
+
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About' },
-  { href: '/links/', label: 'Links' },
-  { href: '/blog/', label: 'Blog' },
+  { href: base + '/', label: 'Home' },
+  { href: base + '/about/', label: 'About' },
+  { href: base + '/links/', label: 'Links' },
+  { href: base + '/blog/', label: 'Blog' },
 ];
 ---
 
 <header class="bg-white shadow-sm">
   <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="/" class="text-xl font-bold text-gray-800">ClassZ Agile</a>
+    <a href={base + '/'} class="text-xl font-bold text-gray-800">ClassZ Agile</a>
     <ul class="flex gap-6">
       {navLinks.map(({ href, label }) => (
         <li>

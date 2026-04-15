@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = '/classz2';
 ---
 
 <BaseLayout title="ClassZ Agile - Wayne Hetherington">
   <section class="text-center py-8">
     <img 
-      src="/profile_photo.png" 
+      src={base + '/profile_photo.png'} 
       alt="Wayne Hetherington" 
       class="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
     />
@@ -27,21 +29,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Recent Posts</h2>
     <div class="space-y-4">
       <article class="border-l-4 border-blue-500 pl-4">
-        <a href="/blog/above-below/" class="block">
+        <a href={base + '/blog/above-below/'} class="block">
           <h3 class="text-lg font-semibold text-gray-800 hover:text-blue-600">Above or Below the Line</h3>
           <p class="text-sm text-gray-500">less than 1 minute read</p>
         </a>
       </article>
       
       <article class="border-l-4 border-blue-500 pl-4">
-        <a href="/blog/favourite_quotes/" class="block">
+        <a href={base + '/blog/favourite_quotes/'} class="block">
           <h3 class="text-lg font-semibold text-gray-800 hover:text-blue-600">My Favourite Quotes</h3>
           <p class="text-sm text-gray-500">3 minute read</p>
         </a>
       </article>
       
       <article class="border-l-4 border-blue-500 pl-4">
-        <a href="/blog/laws_effects_biases/" class="block">
+        <a href={base + '/blog/laws_effects_biases/'} class="block">
           <h3 class="text-lg font-semibold text-gray-800 hover:text-blue-600">Laws, Effects, and Other Cognitive Biases</h3>
           <p class="text-sm text-gray-500">3 minute read</p>
         </a>
