@@ -1,0 +1,3 @@
+Instructions:
+Copy the following command into a terminal window and execute.  It will extract the bookmarks from Vivaldi, generate the markdown, checkin to GitHub, and trigger a build/deploy
+pwsh -ExecutionPolicy Bypass -File C:\Users\wayne\Projects\classz2\scripts\extract-bookmarks.ps1; cd C:\Users\wayne\Projects\classz2; npx jiti scripts/parse-bookmarks.js; npx astro build && npx gh-pages -d dist
