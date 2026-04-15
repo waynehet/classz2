@@ -5,8 +5,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
+  const slugs: Record<string, string> = {
+    'blog/above-below.md': 'above-below',
+    'blog/favourite-quotes.md': 'favourite-quotes',
+    'blog/laws-effects-and-biases.md': 'laws-effects-and-biases',
+    'blog/video-youtube.md': 'video-youtube',
+    'blog/too-much-time-in-meetings.md': 'too-much-time-in-meetings',
+    'blog/scrum-events.md': 'scrum-events',
+    'blog/scrum-events-waste.md': 'scrum-events-waste',
+    'blog/toronto-meetups.md': 'toronto-meetups',
+  };
   return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.md$/, '') },
+    params: { slug: slugs[post.id] || post.id.replace(/\.md$/, '') },
     props: { post },
   }));
 }

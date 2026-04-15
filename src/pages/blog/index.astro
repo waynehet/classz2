@@ -11,6 +11,12 @@ const posts = (await getCollection('blog')).sort(
 const blogSlugs: Record<string, string> = {
   'blog/above-below.md': 'above-below',
   'blog/favourite-quotes.md': 'favourite-quotes',
+  'blog/laws-effects-and-biases.md': 'laws-effects-and-biases',
+  'blog/video-youtube.md': 'video-youtube',
+  'blog/too-much-time-in-meetings.md': 'too-much-time-in-meetings',
+  'blog/scrum-events.md': 'scrum-events',
+  'blog/scrum-events-waste.md': 'scrum-events-waste',
+  'blog/toronto-meetups.md': 'toronto-meetups',
 };
 
 function getSlug(post: { id: string }) {

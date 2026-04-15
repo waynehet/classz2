@@ -22,6 +22,6 @@ Take the next 5 minutes to share your self observations with your group:
 1. How did you feel?
 2. How was your experience similar to that of others? How was it different?
 
-![Worksheet](/assets/locating_yourself.png)
+![Worksheet](/classz2/assets/locating_yourself.png)
 
 *Exercise courtesy of [The Concious Leadership Group](https://conscious.is)*
