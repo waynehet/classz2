@@ -1,12 +1,11 @@
-plugins:
-  - jekyll-sitemap
-  - jekyll-github-metadata
-
+# GitHub Pages configuration
 title: ClassZ Agile
 description: Enterprise Agile Coaching by Wayne Hetherington
 
-# Build settings
-github: [metadata]
-
-# Jekyll configuration
+# Use the dist folder as the build output
 future: true
+
+# Disable Jekyll processing
+plugins:
+  - jekyll-sitemap
+  - jekyll-github-metadata
