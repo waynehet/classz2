@@ -1,1 +1,83 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-accent: #3b82f6;
+  --color-border: #334155;
+}
+
+html {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.dark body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+.dark .bg-white {
+  background-color: #1e293b !important;
+}
+
+.dark .text-gray-900 {
+  color: #f1f5f9;
+}
+
+.dark .text-gray-800 {
+  color: #e2e8f0;
+}
+
+.dark .text-gray-700 {
+  color: #cbd5e1;
+}
+
+.dark .text-gray-600 {
+  color: #94a3b8;
+}
+
+.dark .text-gray-500 {
+  color: #64748b;
+}
+
+.dark .text-gray-400 {
+  color: #475569;
+}
+
+.dark .border-gray-900 {
+  border-color: #334155;
+}
+
+.dark .border-t {
+  border-color: #334155;
+}
+
+.dark .border-l-4 {
+  border-left-color: #3b82f6;
+}
+
+.dark .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #0f172a;
+    color: #f1f5f9;
+  }
+  
+  body {
+    background-color: #0f172a;
+    color: #f1f5f9;
+  }
+}
