@@ -69,8 +69,9 @@ $extracted = @{
 }
 
 foreach ($child in $waynesStuff.children) {
-    $child
-    $extracted.children += Extract-Bookmarks -node $child -path ("Wayne's Stuff")
+    if ($child.type -eq 'folder') {
+        $extracted.children += Extract-Bookmarks -node $child -path ("Wayne's Stuff")
+    }
 }
 
 $data = @{

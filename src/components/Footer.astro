@@ -1,9 +1,24 @@
 ---
 const currentYear = new Date().getFullYear();
+
+const personalLinks = [
+  { href: 'https://www.linkedin.com/in/wayne-hetherington/', label: 'LinkedIn' },
+  { href: 'https://calendly.com/waynehet/30min', label: 'Book a Meeting' },
+  { href: 'mailto:waynehet@gmail.com', label: 'Email' },
+];
 ---
 
 <footer class="bg-slate-800 border-t border-slate-700 mt-auto">
-  <div class="max-w-4xl mx-auto px-4 py-6 text-center text-sm text-slate-400">
-    <p>&copy; {currentYear} Wayne Hetherington. Built with <a href="https://astro.build" class="text-blue-400 hover:underline">Astro</a>.</p>
+  <div class="max-w-4xl mx-auto px-4 py-6">
+    <div class="flex flex-wrap justify-center gap-6 mb-4">
+      {personalLinks.map(link => (
+        <a href={link.href} class="text-blue-400 hover:underline text-sm">
+          {link.label}
+        </a>
+      ))}
+    </div>
+    <div class="text-center text-sm text-slate-400">
+      <p>&copy; {currentYear} Wayne Hetherington. Built with <a href="https://astro.build" class="text-blue-400 hover:underline">Astro</a>.</p>
+    </div>
   </div>
 </footer>

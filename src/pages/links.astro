@@ -1,19 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import { marked } from 'marked';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-const personalLinks = [
-  { href: 'https://www.linkedin.com/in/wayne-hetherington/', label: 'LinkedIn Profile' },
-  { href: 'https://calendly.com/waynehet/30min', label: 'Book a Meeting' },
-  { href: 'mailto:waynehet@gmail.com', label: 'Email Me' },
-];
-
-let bookmarksHtml = '';
+let bookmarksHtml = "";
 try {
-  const bookmarks = await getCollection('bookmarks');
+  const bookmarks = await getCollection("bookmarks");
   if (bookmarks.length > 0) {
-    bookmarksHtml = await marked.parse(bookmarks[0].body);
+    bookmarksHtml = bookmarks[0].body;
   }
 } catch (e) {
   // Content not found - will show message below
@@ -21,27 +14,16 @@ try {
 ---
 
 <BaseLayout title="Links - ClassZ Agile">
-  <h1 class="text-3xl font-bold text-white mb-6">Links</h1>
-  
-  <section class="mb-8">
-    <h2 class="text-2xl font-bold text-white mb-4">Personal</h2>
-    <ul class="space-y-2">
-      {personalLinks.map(link => (
-        <li>
-          <a href={link.href} class="text-blue-400 hover:underline text-lg">
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
-
   <section>
-    <h2 class="text-2xl font-bold text-white mb-4">Bookmarks</h2>
-    {bookmarksHtml ? (
-      <div class="prose prose-invert max-w-none" set:html={bookmarksHtml} />
-    ) : (
-      <p class="text-slate-400">No bookmarks imported yet. Run the extraction script to add links.</p>
-    )}
+    <h2 class="text-2xl font-bold text-white mb-4">Wayne'sBookmarks</h2>
+    {
+      bookmarksHtml ? (
+        <div class="prose prose-invert max-w-none" set:html={bookmarksHtml} />
+      ) : (
+        <p class="text-slate-400">
+          No bookmarks imported yet. Run the extraction script to add links.
+        </p>
+      )
+    }
   </section>
 </BaseLayout>
