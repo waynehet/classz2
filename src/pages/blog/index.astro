@@ -1,10 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { fileURLToPath } from 'node:url';
 
+const base = '/classz2';
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+function getSlug(post: { id: string }) {
+  return post.id.replace(/\.md$/, '').replace('blog/', '');
+}
 ---
 
 <BaseLayout title="Blog - ClassZ Agile">
@@ -13,7 +19,7 @@ const posts = (await getCollection('blog')).sort(
   <div class="space-y-6">
     {posts.map((post) => (
       <article class="border-l-4 border-blue-500 pl-4">
-        <a href={`/blog/${post.slug}/`} class="block">
+        <a href={`${base}/blog/${getSlug(post)}/`} class="block">
           <h2 class="text-xl font-semibold text-gray-800 hover:text-blue-600">
             {post.data.title}
           </h2>
