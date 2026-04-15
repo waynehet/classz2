@@ -4,7 +4,10 @@
 $ErrorActionPreference = "Stop"
 
 $bookmarksPath = "$env:LOCALAPPDATA\Vivaldi\User Data\Default\Bookmarks"
-$outputPath = "src\data\bookmarks.json"
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$rootDir = (Get-Item $scriptDir).Parent.FullName
+$outputPath = Join-Path $rootDir "src\data\bookmarks.json"
+$mdPath = Join-Path $rootDir "src\content\bookmarks\links.md"
 
 Write-Host "Reading Vivaldi bookmarks from: $bookmarksPath"
 
@@ -45,9 +48,11 @@ function Extract-Bookmarks {
     return $results
 }
 
-# Find "Wayne's Stuff" folder
-$roots = $bookmarksJson.roots
-$waynesStuff = Find-WaynesStuff -roots $roots
+# Find "Wayne's Stuff" folder - it's nested inside the "Bookmarks" folder
+$bookmarksFolder = $bookmarksJson.roots.bookmark_bar.children | Where-Object { $_.name -eq "Bookmarks" -and $_.type -eq "folder" }
+if ($bookmarksFolder) {
+    $waynesStuff = $bookmarksFolder.children | Where-Object { $_.name -eq "Wayne's Stuff" }
+}
 
 if (-not $waynesStuff) {
     Write-Host "ERROR: 'Wayne's Stuff' folder not found"
@@ -79,7 +84,51 @@ if (-not (Test-Path $outputDir)) {
     New-Item -ItemType Directory -Path $outputDir -Force | Out-Null
 }
 
+# Generate Markdown
+$markdown = "# Links`n`n"
+$markdown += "Extracted: $($data.extracted)`n`n"
+
+function Add-MarkdownNode {
+    param($node, [int]$depth = 0)
+    
+    $result = ""
+    
+    if ($node.type -eq 'folder' -and $node.children) {
+        if ($depth -gt 0) {
+            $headerLevel = if ($depth -eq 1) { "##" } else { "###" }
+            $result += "`n$headerLevel $($node.name)`n"
+        }
+        
+        foreach ($child in $node.children) {
+            $result += Add-MarkdownNode -node $child -depth ($depth + 1)
+        }
+    }
+    elseif ($node.type -eq 'url' -and $node.url) {
+        $title = if ($node.name) { $node.name } else { "Untitled" }
+        $result += "- [$title]($($node.url))`n"
+    }
+    
+    return $result
+}
+
+foreach ($child in $extracted.children) {
+    if ($child.type -eq 'folder') {
+        $markdown += Add-MarkdownNode -node $child -depth 1
+    }
+    elseif ($child.type -eq 'url' -and $child.url) {
+        $markdown += "`n## Other`n"
+        $title = if ($child.name) { $child.name } else { "Untitled" }
+        $markdown += "- [$title]($($child.url))`n"
+    }
+}
+
+# Save JSON (for potential other uses)
 $data | ConvertTo-Json -Depth 100 | Set-Content -Path $outputPath -Encoding UTF8
 
-Write-Host "SUCCESS: Bookmarks extracted to $outputPath"
-Write-Host "Extracted $($extracted.children.Count) top-level folders"
+# Save Markdown
+$markdown | Set-Content -Path $mdPath -Encoding UTF8
+
+Write-Host "SUCCESS: Bookmarks extracted"
+Write-Host "  JSON: $outputPath"
+Write-Host "  Markdown: $mdPath"
+Write-Host "  Extracted $($extracted.children.Count) top-level folders"

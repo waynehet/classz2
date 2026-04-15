@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { marked } from 'marked';
 
 const personalLinks = [
   { href: 'https://www.linkedin.com/in/wayne-hetherington/', label: 'LinkedIn Profile' },
@@ -8,11 +9,11 @@ const personalLinks = [
   { href: 'mailto:waynehet@gmail.com', label: 'Email Me' },
 ];
 
-let bookmarksContent = '';
+let bookmarksHtml = '';
 try {
-  const entry = await getEntry('bookmarks', 'links');
-  if (entry) {
-    bookmarksContent = entry.body;
+  const bookmarks = await getCollection('bookmarks');
+  if (bookmarks.length > 0) {
+    bookmarksHtml = await marked.parse(bookmarks[0].body);
   }
 } catch (e) {
   // Content not found - will show message below
@@ -37,8 +38,8 @@ try {
 
   <section>
     <h2 class="text-2xl font-bold text-white mb-4">Bookmarks</h2>
-    {bookmarksContent ? (
-      <div class="prose prose-invert max-w-none" set:html={bookmarksContent} />
+    {bookmarksHtml ? (
+      <div class="prose prose-invert max-w-none" set:html={bookmarksHtml} />
     ) : (
       <p class="text-slate-400">No bookmarks imported yet. Run the extraction script to add links.</p>
     )}
