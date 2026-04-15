@@ -1,25 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const personalLinks = [
+  { href: 'https://www.linkedin.com/in/wayne-hetherington/', label: 'LinkedIn Profile' },
+  { href: 'https://calendly.com/waynehet/30min', label: 'Book a Meeting' },
+  { href: 'mailto:waynehet@gmail.com', label: 'Email Me' },
+];
+
+let bookmarksContent = '';
+try {
+  const entry = await getEntry('bookmarks', 'links');
+  if (entry) {
+    bookmarksContent = entry.body;
+  }
+} catch (e) {
+  // Content not found - will show message below
+}
 ---
 
 <BaseLayout title="Links - ClassZ Agile">
   <h1 class="text-3xl font-bold text-white mb-6">Links</h1>
   
-  <ul class="space-y-4">
-    <li>
-      <a href="https://www.linkedin.com/in/wayne-hetherington/" class="text-blue-400 hover:underline text-lg">
-        LinkedIn Profile
-      </a>
-    </li>
-    <li>
-      <a href="https://calendly.com/waynehet/30min" class="text-blue-400 hover:underline text-lg">
-        Book a Meeting
-      </a>
-    </li>
-    <li>
-      <a href="mailto:waynehet@gmail.com" class="text-blue-400 hover:underline text-lg">
-        Email Me
-      </a>
-    </li>
-  </ul>
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold text-white mb-4">Personal</h2>
+    <ul class="space-y-2">
+      {personalLinks.map(link => (
+        <li>
+          <a href={link.href} class="text-blue-400 hover:underline text-lg">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-2xl font-bold text-white mb-4">Bookmarks</h2>
+    {bookmarksContent ? (
+      <div class="prose prose-invert max-w-none" set:html={bookmarksContent} />
+    ) : (
+      <p class="text-slate-400">No bookmarks imported yet. Run the extraction script to add links.</p>
+    )}
+  </section>
 </BaseLayout>

@@ -10,7 +10,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "bookmarks:extract": "powershell -ExecutionPolicy Bypass -File scripts/extract-bookmarks.ps1",
+    "bookmarks:parse": "node scripts/parse-bookmarks.js",
+    "bookmarks:update": "npm run bookmarks:extract && npm run bookmarks:parse"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
@@ -20,6 +23,7 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "sharp": "^0.34.5"
   }
 }
