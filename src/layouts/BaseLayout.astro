@@ -29,7 +29,10 @@ const base = '/classz2';
       </style>
     )}
   </head>
-  <body class="min-h-screen flex flex-col bg-slate-900 text-slate-100">
+  <body class:list={[
+  "min-h-screen flex flex-col text-slate-100",
+  showBackground ? "bg-transparent" : "bg-slate-900"
+]}>
     {showBackground && (
       <img 
         src={base + '/assets/background.png'} 
