@@ -1,4 +1,4 @@
-<!-- Bookmarks extracted: 2026-04-15 15:50:59 -->
+<!-- Bookmarks extracted: 2026-04-27 16:55:14 -->
 <style>
 details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }
@@ -950,7 +950,9 @@ details[open] > summary::before { content: '📂'; }
 <li><a href="https://learnprompting.org/" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Learn Prompting: Your Guide to Communicating with AI</a></li>
 <li><a href="https://huggingface.co/" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Hugging Face – The AI community building the future.</a></li>
 <li><a href="https://colab.research.google.com/" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Welcome To Colab - Colab</a></li>
+<li><a href="https://opencode.ai/" class="text-blue-400 hover:underline" target="_blank" rel="noopener">OpenCode | The open source AI coding agent</a></li>
 <li><a href="https://github.com/wesammustafa/OpenCode-Everything-You-Need-to-Know" class="text-blue-400 hover:underline" target="_blank" rel="noopener">OpenCode-Everything-You-Need-to-Know</a></li>
+<li><a href="https://www.youtube.com/watch?v=7XQdp3hItX4" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Vibe Coding in VS Code for Free Using OpenCode (Full Setup) - YouTube</a></li>
 <li><a href="https://thealliance.ai/" class="text-blue-400 hover:underline" target="_blank" rel="noopener">AI Alliance</a></li>
 <li><a href="https://antigravity.google/" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Google Antigravity</a></li>
 <li><a href="https://v0-danly.vercel.app/job-agent" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Stop Winging Your Job Search</a></li>
@@ -1177,7 +1179,6 @@ details[open] > summary::before { content: '📂'; }
 <li><a href="http://blogs.technet.com/jhoward/default.aspx" class="text-blue-400 hover:underline" target="_blank" rel="noopener">John Howard - Hyper-V and virtualization blog</a></li>
 <li><a href="http://blogs.msdn.com/Virtual_PC_Guy/" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Virtual PC Guy&#039;s WebLog</a></li>
 <li><a href="http://www.microsoft.com/windows/products/winfamily/virtualpc/default.mspx" class="text-blue-400 hover:underline" target="_blank" rel="noopener">httpwww.microsoft.comwindowsproductswinfamilyvirtualpcdefault.mspx</a></li>
-<li><a href="http://www.mremoteng.org/" class="text-blue-400 hover:underline" target="_blank" rel="noopener">mRemoteNG</a></li>
 <li><a href="http://archive.msdn.microsoft.com/HVRemote" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Hyper-V Remote Management Configuration Utility - Home</a></li>
 <li><a href="http://technet.microsoft.com/en-us/sysinternals/ee656415.aspx" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Disk2vhd</a></li>
 <li><a href="http://technet.microsoft.com/en-us/library/cc733145(v=ws.10).aspx" class="text-blue-400 hover:underline" target="_blank" rel="noopener">Robocopy</a></li>
