@@ -7,4 +7,4 @@ categories: []
 
 YouTube video embed below.
 
-<iframe width="640" height="360" src="https://youtu.be/fLqzYDZAqCI??controls=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fLqzYDZAqCI?si=3xilYNJVLC907fN5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
