@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/BaseLayout.astro';
+
+const quotes = [
+  { text: "Any intelligent fool can make things bigger and more complex… It takes a touch of genius - and a lot of courage to move in the opposite direction.", author: "E. F. Schumacher", url: "https://en.wikipedia.org/wiki/E._F._Schumacher", image: "schumacher.jpg" },
+  { text: "Everything should be made as simple as possible, but ot simpler.", author: "Albert Einstein", url: "https://en.wikipedia.org/wiki/Albert_Einstein", image: "einstein.jpg" },
+  { text: "They may forget what you said, but they will never forget how you made them feel.", author: "Carl W. Buehner", url: "https://en.wikipedia.org/wiki/Carl_W._Buehner", image: "buehner.jpg" },
+  { text: "If I Had More Time, I Would Have Written a Shorter Letter", author: "Blaise Pascal", url: "https://en.wikipedia.org/wiki/Blaise_Pascal", image: "blaise_pascal.jpg" },
+  { text: "Depend upon it, sir, when a man knows he is to be hanged in a fortnight, it concentrates his mind wonderfully.", author: "Samuel Johnson", url: "https://en.wikipedia.org/wiki/Samuel_Johnson", image: "samuel_johnson.jpg" },
+  { text: "Winners are not those who never fail, but those who never quit.", author: "Banksy", url: "https://en.wikipedia.org/wiki/Banksy", image: "banksy.jpg" },
+  { text: "Nothing in life is as important as you think it is while you are thinking about it.", author: "Daniel Kahneman", url: "https://en.wikipedia.org/wiki/Daniel_Kahneman", image: "daniel_kahneman.jpg" },
+  { text: "Wrong does not cease to be wrong because the majority share in it.", author: "Leo Tolstoy", url: "https://en.wikipedia.org/wiki/Leo_Tolstoy", image: "leo_tolstoy.jpg" },
+  { text: "What we see depends on what we thought before we looked", author: "Myron Tribus", url: "https://en.wikipedia.org/wiki/Myron_Tribus", image: "myron_tribus.jpg" },
+  { text: "The secret of getting ahead is getting started. The secret of getting started is breaking your complex, overwhelming tasks into small manageable tasks, and then starting on the first one.\nIt usually takes more than three weeks to prepare a good impromptu speech.", author: "Mark Twain", url: "https://en.wikipedia.org/wiki/Mark_Twain", image: "Mark_Twain.jpg" },
+  { text: "It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is most adaptable to change.", author: "Charles Darwin", url: "https://quoteinvestigator.com/2014/05/04/adapt/", image: "charles_darwin.jpg" },
+  { text: "Prediction is very difficult, especially if it's about the future.", author: "Niels Bohr", url: "https://www.brainyquote.com/quotes/niels_bohr_130288", image: "niels_bohr.jpg" },
+  { text: "The single biggest problem in communication is the illusion that it has taken place.", author: "George Bernard Shaw", url: "https://en.wikipedia.org/wiki/George_Bernard_Shaw", image: "george_bernard_shaw.jpg" },
+  { text: "You've got to be very careful if you don't know where you are going, because you might not get there.\nIn theory there is no difference between theory and practice. But, in practice, there is.", author: "Yogi Berra", url: "https://en.wikipedia.org/wiki/Yogi_Berra", image: "yogi_berra.png" },
+  { text: "Funny how we don't have time to make improvements, but we have plenty of time to perform work inefficiently and keep resolving the same problems over and over.\nIn God we trust; all others bring data.\nWithout data, you're just another person with an opinion.", author: "Edwards Deming", url: "https://en.m.wikipedia.org/wiki/W._Edwards_Deming", image: "edwards_deming.png" },
+  { text: "The cave you fear to enter holds the treasure you seek.", author: "Joseph Campbell", url: "https://en.wikipedia.org/wiki/Joseph_Campbell", image: "joseph_campbell.jpg" },
+  { text: "Nobody cares how much you know, until they know how much you care.", author: "Theodore Roosevelt", url: "https://en.wikipedia.org/wiki/Theodore_Roosevelt", image: "theodore_roosevelt.jpg" },
+  { text: "When will all the rhetorical questions end?", author: "George Carlin", url: "https://en.wikipedia.org/wiki/George_Carlin", image: "george_carlin.jpg" },
+  { text: "Great civilisations are not murdered. Instead, they take their own lives.", author: "Arnold Toynbee", url: "https://en.wikipedia.org/wiki/Arnold_J._Toynbee", image: "arnold_toynbee.png" },
+  { text: "Those who fail to learn from history are doomed to repeat it.\nFanaticism consists of redoubling your effort when you have forgotten your aim.", author: "George Santayana", url: "https://en.wikipedia.org/wiki/George_Santayana", image: "george_santayana.jpg" },
+  { text: "The only thing we learn from history is that we learn nothing from history.", author: "Georg Wilhelm Friedrich Hegel", url: "https://en.m.wikipedia.org/wiki/Georg_Wilhelm_Friedrich_Hegel", image: "hegel.jpg" },
+  { text: "We are defined by what we tolerate.", author: "Marilyn Carlson Nelson", url: "https://en.wikipedia.org/wiki/Marilyn_Carlson_Nelson", image: "marilyn_carlson_nelson.jpg" },
+  { text: "Results without process can't be replicated and process without results is worthless.", author: "Steve Ewing", url: "https://www.crunchbase.com/person/stephen-e-ewing", image: "stephen_ewing.png" },
+  { text: "We don't see things as they are; we see them as we are.", author: "Anaïs Nin", url: "https://en.wikipedia.org/wiki/Ana%C3%AFs_Nin", image: "Anais-Nin.png" },
+  { text: "Man prefers to believe what he prefers to be true.", author: "Sir Francis Bacon", url: "https://en.wikipedia.org/wiki/Francis_Bacon", image: "sir_francis_bacon.jpg" },
+  { text: "The eye sees only what the mind is prepared to comprehend.", author: "Henri-Louis Bergson", url: "https://en.m.wikipedia.org/wiki/Henri_Bergson", image: "henri_bergson.jpg" },
+  { text: "People don't resist change, they resist being changed.", author: "Peter Scholtes", url: "https://en.wikipedia.org/wiki/Peter_Scholtes", image: "peter_scholtes.jpg" },
+  { text: "There is nothing so practical as a good theory.\nIf you want truly to understand something, try to change it.", author: "Kurt Lewin", url: "https://en.wikipedia.org/wiki/Kurt_Lewin", image: "kurt_lewin.jpg" },
+  { text: "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.", author: "Albert Schweitzer", url: "https://en.wikipedia.org/wiki/Albert_Schweitzer", image: "albert_schweitzer.png" },
+  { text: "Not everything that is faced can be changed, but nothing can be changed until it is faced.", author: "James Baldwin", url: "https://en.wikipedia.org/wiki/James_Baldwin", image: "james_baldwin.png" },
+  { text: "Feelings are something you have; not something you are.", author: "Shannon L. Alder", url: "https://www.goodreads.com/quotes/906515-feelings-are-something-you-have-not-something-you-are", image: "shannon_alder.png" },
+  { text: "All progress begins with telling the truth.", author: "Dan Sullivan", url: "https://www.strategiccoach.com/our-team/#/people/dan-sullivan/", image: "dan_sullivan.png" },
+  { text: "Optimize for efficiency and you get gridlock. Optimize for speed of flow and you get efficiency.", author: "John Terry", url: "https://twitter.com/leankitjon", image: "john_terry.png" },
+  { text: "Outside of a Dog, a Book is Man's Best Friend. Inside of a Dog, It's Too Dark to Read.\nTime flies like an arrow. Fruit flies like a banana.", author: "Groucho Marx", url: "https://en.wikipedia.org/wiki/Groucho_Marx", image: "groucho_marx.jpg" },
+  { text: "What is important is seldom urgent, and what is urgent is seldom important.", author: "Dwight D. Eisenhower", url: "https://en.wikipedia.org/wiki/Dwight_D._Eisenhower", image: "dwight_eisenhower.png" },
+  { text: "There's an epidemic of interruption out there. No wonder people have to put in 60+ hours a week just to get 40 hours worth of work done.", author: "Jason Fried", url: "https://www.ted.com/speakers/jason_fried", image: "jason_fried.png" },
+  { text: "The door of the human heart can only be opened from the inside.", author: "William Holman Hunt", url: "https://en.wikipedia.org/wiki/William_Holman_Hunt", image: "William_Holman_Hunt.png" },
+  { text: "You don't play whatever you feel. The only freedom is in structure.", author: "Brandford Marsalis", url: "https://en.wikipedia.org/wiki/Branford_Marsalis", image: "wynton_marsalis.jpg" },
+];
+---
+
+<Base title="My Favourite Quotes" description="Some Really Great Quotes">
+  <div class="space-y-6">
+    {quotes.map((quote) => (
+      <article class="border-l-4 border-blue-500 pl-4 flex gap-4">
+        {quote.image && (
+          <img 
+            src={`/classz2/assets/${quote.image}`} 
+            alt={quote.author}
+            class="w-24 h-24 object-cover rounded-full flex-shrink-0"
+          />
+        )}
+        <div>
+          <p class="text-xl text-slate-200 leading-relaxed whitespace-pre-line">"{quote.text}"</p>
+          <p class="text-sm text-slate-500 mt-2">— <a href={quote.url} target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">{quote.author}</a></p>
+        </div>
+      </article>
+    ))}
+  </div>
+</Base>

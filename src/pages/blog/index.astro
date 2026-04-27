@@ -10,7 +10,6 @@ const posts = (await getCollection('blog')).sort(
 
 const blogSlugs: Record<string, string> = {
   'blog/above-below.md': 'above-below',
-  'blog/favourite-quotes.md': 'favourite-quotes',
   'blog/laws-effects-and-biases.md': 'laws-effects-and-biases',
   'blog/video-youtube.md': 'video-youtube',
   'blog/too-much-time-in-meetings.md': 'too-much-time-in-meetings',
@@ -22,15 +21,19 @@ const blogSlugs: Record<string, string> = {
 function getSlug(post: { id: string }) {
   return blogSlugs[post.id] || post.id.replace(/\.md$/, '');
 }
+
+const manualPosts = [
+  { title: "My Favourite Quotes", slug: "favourite-quotes", date: new Date("2022-12-01"), description: "Some Really Great Quotes" },
+];
 ---
 
 <BaseLayout title="Blog - ClassZ Agile">
   <h1 class="text-3xl font-bold text-white mb-6">Blog</h1>
   
   <div class="space-y-6">
-    {posts.map((post) => (
+    {[...posts, ...manualPosts.map(p => ({ data: { title: p.title, description: p.description, pubDate: p.date }, id: p.slug, manual: true, slug: p.slug }))].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).map((post: any) => (
       <article class="border-l-4 border-blue-500 pl-4">
-        <a href={`${base}/blog/${getSlug(post)}/`} class="block">
+        <a href={`${base}/blog/${post.manual ? post.slug : getSlug(post)}/`} class="block">
           <h2 class="text-2xl font-bold text-slate-200 hover:text-blue-400">
             {post.data.title}
           </h2>
