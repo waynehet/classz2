@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://waynehet.github.io',
+  site: 'https://classz.ca',
   base: '/classz2',
   vite: {
     plugins: [tailwindcss()]
