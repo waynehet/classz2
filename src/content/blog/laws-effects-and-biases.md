@@ -51,6 +51,7 @@ categories: []
 * [Next in Line Effect](https://en.wikipedia.org/wiki/Next-in-line_effect): You will forget the information from the person immediately ahead of you in line
 * [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor): Pick the solution with the fewest assumptions
 * [Orienting Response](https://en.wikipedia.org/wiki/Orienting_response): Changes in environment can interrupt attention and focus (lesser form of [Startle Response](https://en.wikipedia.org/wiki/Startle_response) )
+* [Overview Effect](https://en.wikipedia.org/wiki/Overview_effect): The feeling of awe astronauts get when viewing the beauty of Earth from space
 * [Pareto Principle](https://en.wikipedia.org/wiki/Pareto_principle): 80/20 rule
 * [Parkinson's Law](https://en.wikipedia.org/wiki/Parkinson%27s_law): Work expands to fill the time available
 * [Peter Principle](https://en.wikipedia.org/wiki/Peter_principle): People in a hierarchy tend to rise to their "level of incompetence"
